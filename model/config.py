@@ -91,4 +91,5 @@ OAT_RANGES = {
     'gamma':  np.linspace(0.2,  0.6,   9),
     'theta':  np.linspace(1.0,  3.0,   9),
     'delta':  np.linspace(0.5,  1.5,   7),
+    'k':      np.linspace(0.1,  1.0,   5),
 }

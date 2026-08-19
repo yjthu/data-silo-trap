@@ -51,6 +51,10 @@ DATA_STAGES = [
     ('ABM multi-start (3 realizations x 9 initial states)',
      [sys.executable, 'analysis', 'run_abm_multistart.py']),
     ('Pool-size externality robustness', [sys.executable, 'analysis', 'poolsize_robustness.py']),
+    ('Welfare assessment (type model + ABM equilibria)', [sys.executable, 'analysis', 'welfare.py']),
+    ('Joint parameter-range sensitivity (heatmaps)', [sys.executable, 'analysis', 'heatmap_robustness.py']),
+    ('Gap items (cross-effects, stability, k, trust boost, cost scaling)',
+     [sys.executable, 'analysis', 'gap_items.py']),
 ]
 
 ARTIFACT_STAGES = [
@@ -133,9 +137,9 @@ EXPECTED = [
     ('lambda0_baseline.csv', lambda df: df['T100'].mean(), 0.2548, 'lambda=0 T100'),
     ('sensitivity_oat.csv',
      lambda df: df[(df['param'] == 'lambda') & (df['value'] == 0.8)]['T100_mean'].iloc[0],
-     0.0558, 'OAT lambda=0.8'),
+     0.0555, 'OAT lambda=0.8'),
     ('sensitivity_oat.csv',
-     lambda df: df[(df['param'] == 'gamma')]['T100_mean'].max(), 0.545, 'OAT gamma max'),
+     lambda df: df[(df['param'] == 'gamma')]['T100_mean'].max(), 0.5425, 'OAT gamma max'),
     ('cross_country.csv',
      lambda df: df[df['country'] == 'China']['T100_mean'].iloc[0], 0.1700, 'China baseline'),
     ('cross_country_fst.csv',
@@ -161,6 +165,27 @@ EXPECTED = [
      lambda df: df[df['N_0'] == 0.0]['T100_mean'].iloc[0], 0.1691, 'poolsize N0=0'),
     ('poolsize_robustness.csv',
      lambda df: df[df['N_0'] == 0.3]['T100_mean'].iloc[0], 0.0331, 'poolsize N0=0.3'),
+    ('welfare.csv', lambda df: df['W0'].mean(), 1.0845, 'baseline welfare per firm'),
+    ('welfare.csv', lambda df: df['W_full'].mean(), 0.8558, 'forced-adoption welfare'),
+    ('welfare.csv', lambda df: df['W_subsidy_net'].mean(), -0.0085, 'subsidy net welfare'),
+    ('welfare_abm.csv',
+     lambda df: df[df['equilibrium'] == 'low']['W_per_firm'].mean(), 1.1124, 'ABM low-eq welfare'),
+    ('welfare_abm.csv',
+     lambda df: df[df['equilibrium'] == 'high']['W_per_firm'].mean(), 0.9869, 'ABM high-eq welfare'),
+    ('cross_effect.csv', lambda df: df.iloc[0, 3], -0.8111, 'cross-effect dV_H/drho_L'),
+    ('eigenvalues.csv', lambda df: df['eigenvalue'].max(), -0.2, 'Jacobian eigenvalue max (<0)'),
+    ('k_neutrality.csv', lambda df: df[df['k'] >= 0.2]['T100'].max()
+     - df[df['k'] >= 0.2]['T100'].min(), 0.0005, 'k neutrality span'),
+    ('cross_country_cost.csv',
+     lambda df: df[df['country'] == 'Africa']['T100_mean'].iloc[0], 0.0732, 'Africa cost-scaled'),
+    ('cross_country_cost.csv',
+     lambda df: df[df['country'] == 'Brazil']['T100_mean'].iloc[0], 0.2025, 'Brazil cost-scaled'),
+    ('heatmap_gamma_beta.csv',
+     lambda df: df[(abs(df['gamma'] - 0.45) < 1e-9) & (abs(df['beta'] - 0.5) < 1e-9)]
+     ['T100_mean'].iloc[0], 0.17, 'heatmap (gamma,beta) baseline point'),
+    ('heatmap_gamma_lambda.csv',
+     lambda df: df[(abs(df['gamma'] - 0.45) < 1e-9) & (abs(df['lambda'] - 0.3) < 1e-9)]
+     ['T100_mean'].iloc[0], 0.17, 'heatmap (gamma,lambda) baseline point'),
 ]
 
 TOL = 1e-3

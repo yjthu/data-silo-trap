@@ -253,9 +253,10 @@ def fig4():
     # (a) OAT
     ax = fig.add_subplot(gs[0, 0])
     param_colors = {'gamma': cL, 'alpha': cH, 'delta': cOrange, 'lambda': cM,
-                    'beta': cGreen, 'theta': cPurple}
+                    'beta': cGreen, 'theta': cPurple, 'k': '#999999'}
     param_labels = {'gamma': r'$\gamma$', 'alpha': r'$\alpha$', 'delta': r'$\delta$',
-                    'lambda': r'$\lambda$', 'beta': r'$\beta$', 'theta': r'$\theta$'}
+                    'lambda': r'$\lambda$', 'beta': r'$\beta$', 'theta': r'$\theta$',
+                    'k': r'$k$'}
     for p, grp in oat.groupby('param'):
         x = grp['value'].values
         xn = (x - x.min()) / (x.max() - x.min() + 1e-12)
@@ -394,10 +395,94 @@ def fig5():
     save(fig, 'Fig5_validation')
 
 
+# =====================================================================
+# Fig 6: Welfare assessment
+# =====================================================================
+def fig6():
+    ws = pd.read_csv(os.path.join(DATA, 'welfare_scan.csv'))
+    wa = pd.read_csv(os.path.join(DATA, 'welfare_abm.csv'))
+
+    fig = plt.figure(figsize=(7.5, 2.5))
+    gs = gridspec.GridSpec(1, 2, wspace=0.35)
+
+    # (a) net welfare vs subsidy rate / platform fee
+    ax = fig.add_subplot(gs[0, 0])
+    sub = ws[ws['policy'] == 'subsidy'].groupby('value')['W_net'].mean()
+    plat = ws[ws['policy'] == 'platform'].groupby('value')['W_net'].mean()
+    ax.plot(sub.index, sub.values, 'o-', color=cOrange, lw=1.5, ms=3, label='Subsidy s')
+    ax.plot(plat.index, plat.values, 's-', color=cGreen, lw=1.5, ms=3, label='Platform fee')
+    ax.axhline(0, color='gray', lw=0.8, ls='--')
+    ax.annotate('welfare-negative\nnet of costs', xy=(0.5, -0.010), fontsize=6.5,
+                color='#555', ha='center')
+    ax.set_xlabel('Intervention intensity'); ax.set_ylabel(r'$\Delta$W per firm')
+    ax.set_ylim(-0.025, 0.005)
+    ax.legend(fontsize=6.5)
+    label(ax, 'a')
+
+    # (b) ABM low- vs high-equilibrium welfare
+    ax = fig.add_subplot(gs[0, 1])
+    seeds = sorted(wa['seed'].unique())
+    low = [wa[(wa['seed'] == s) & (wa['equilibrium'] == 'low')]['W_per_firm'].iloc[0]
+           for s in seeds]
+    high = [wa[(wa['seed'] == s) & (wa['equilibrium'] == 'high')]['W_per_firm'].iloc[0]
+            for s in seeds]
+    x = np.arange(len(seeds))
+    ax.bar(x - 0.18, low, width=0.36, color=cL, edgecolor='white', label='Low equilibrium')
+    ax.bar(x + 0.18, high, width=0.36, color=cH, edgecolor='white', label='High equilibrium')
+    for i in range(len(seeds)):
+        ax.text(i - 0.18, low[i] + 0.004, f'{low[i]:.2f}', ha='center', fontsize=6)
+        ax.text(i + 0.18, high[i] + 0.004, f'{high[i]:.2f}', ha='center', fontsize=6)
+    ax.set_xticks(x); ax.set_xticklabels([f'seed {s}' for s in seeds])
+    ax.set_ylabel('Welfare per firm'); ax.set_ylim(0, 1.2)
+    ax.legend(fontsize=6.5)
+    ax.annotate('low equilibrium is\nwelfare-superior', xy=(1, 0.35),
+                fontsize=6.5, color='#555', ha='center')
+    label(ax, 'b')
+
+    save(fig, 'Fig6_welfare')
+
+
+# =====================================================================
+# Fig S1 (supplementary): joint parameter-range sensitivity heatmaps
+# =====================================================================
+def figS1():
+    gb = pd.read_csv(os.path.join(DATA, 'heatmap_gamma_beta.csv'))
+    gl = pd.read_csv(os.path.join(DATA, 'heatmap_gamma_lambda.csv'))
+
+    fig = plt.figure(figsize=(7.5, 2.5))
+    gs = gridspec.GridSpec(1, 2, wspace=0.35)
+
+    ax = fig.add_subplot(gs[0, 0])
+    piv = gb.pivot(index='gamma', columns='beta', values='T100_mean')
+    im = ax.imshow(piv.values, origin='lower', aspect='auto', cmap='YlOrRd',
+                   extent=[piv.columns.min(), piv.columns.max(), piv.index.min(), piv.index.max()])
+    ax.scatter([0.5], [0.45], marker='o', facecolors='none', edgecolors='k', s=60, lw=1.2)
+    ax.annotate('baseline', xy=(0.5, 0.45), xytext=(0.56, 0.52), fontsize=6, color='k')
+    ax.set_xlabel(r'$\beta$ (sharing benefit)'); ax.set_ylabel(r'$\gamma$ (misalignment)')
+    ax.set_title(r'$T_{100}$ over ($\gamma$, $\beta$)', fontsize=7)
+    fig.colorbar(im, ax=ax, fraction=0.046, pad=0.04)
+    label(ax, 'a')
+
+    ax = fig.add_subplot(gs[0, 1])
+    piv2 = gl.pivot(index='gamma', columns='lambda', values='T100_mean')
+    im2 = ax.imshow(piv2.values, origin='lower', aspect='auto', cmap='YlOrRd',
+                    extent=[piv2.columns.min(), piv2.columns.max(), piv2.index.min(), piv2.index.max()])
+    ax.scatter([0.3], [0.45], marker='o', facecolors='none', edgecolors='k', s=60, lw=1.2)
+    ax.annotate('baseline', xy=(0.3, 0.45), xytext=(0.38, 0.52), fontsize=6, color='k')
+    ax.set_xlabel(r'$\lambda$ (free-riding)'); ax.set_ylabel(r'$\gamma$ (misalignment)')
+    ax.set_title(r'$T_{100}$ over ($\gamma$, $\lambda$)', fontsize=7)
+    fig.colorbar(im2, ax=ax, fraction=0.046, pad=0.04)
+    label(ax, 'b')
+
+    save(fig, 'FigS1_heatmap')
+
+
 if __name__ == '__main__':
     fig1()
     fig2()
     fig3()
     fig4()
     fig5()
-    print('All 5 figures generated.')
+    fig6()
+    figS1()
+    print('All figures generated.')

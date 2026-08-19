@@ -15,6 +15,7 @@ A coordination-game model in which **genetic distance** enters the payoff struct
 | Weak driver | Cross-population transferability decay θ |
 | Free-riding effect | λ = 0 → T₁₀₀ = 0.255 (+50% vs. baseline) |
 | ABM multiple equilibria | multi-start: ≈0.06 / ≈0.37 / ≈0.89 for fixed realizations |
+| Welfare | baseline welfare 1.0845/firm > forced adoption 0.8558 (−21%); subsidies/platform welfare-negative; low equilibrium welfare-superior in ABM |
 
 ## Repository structure
 
@@ -33,15 +34,18 @@ A coordination-game model in which **genetic distance** enters the payoff struct
 │   ├── premium_stats.py    #   Firm-level premium statistics (Fig 1c)
 │   ├── run_abm_mc.py       #   ABM Monte Carlo (S14)
 │   ├── run_abm_multistart.py    # ABM multi-start experiment (S15)
-│   └── poolsize_robustness.py   # Pool-size externality robustness (S16)
+│   ├── poolsize_robustness.py   # Pool-size externality robustness (S16)
+│   ├── welfare.py          #   Welfare assessment (S18, Fig 6)
+│   ├── heatmap_robustness.py    # Joint parameter-range heatmaps (S17, Fig S1)
+│   └── gap_items.py        #   Cross-effects, stability, k, trust boost, cost scaling
 ├── run_all.py              # One-command full pipeline + verification
 ├── run_analysis.py         # Main runner: P0–P3, sensitivity, stability
 ├── run_fst_all.py          # F_ST sensitivity (6 countries × 3 scales)
 ├── run_fscale.py           # Cost-scale robustness (F × 0.5–1.5)
 ├── make_figures.py         # Generate Fig 1–5 (PDF + PNG)
 ├── export_tables.py        # Assemble consolidated supplementary tables
-├── data/                   # All simulation outputs (17 CSVs, S1–S16)
-├── figures/                # Publication figures (PNG + PDF)
+├── data/                   # All simulation outputs (27 CSVs, S1–S18)
+├── figures/                # Publication figures (14 files: Fig 1–6 + Fig S1)
 ├── supplementary_tables.csv  # Consolidated supplementary tables
 ├── requirements.txt
 └── .gitignore
@@ -85,6 +89,10 @@ python analysis/premium_stats.py       # Firm-level premium statistics (Fig 1c)
 python analysis/run_abm_mc.py          # ABM Monte Carlo (S14, ~6 min)
 python analysis/run_abm_multistart.py  # ABM multi-start (S15)
 python analysis/poolsize_robustness.py # Pool-size robustness (S16)
+python analysis/welfare.py             # Welfare assessment (S18, Fig 6)
+python analysis/heatmap_robustness.py  # Joint parameter-range heatmaps (S17, Fig S1)
+python analysis/gap_items.py           # Cross-effects, stability, k, trust boost,
+                                       #   infrastructure cost scaling (S9/S12)
 python make_figures.py                 # Regenerate all figures (reads data/)
 python export_tables.py                # Reassemble supplementary tables CSV
 ```

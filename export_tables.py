@@ -34,6 +34,14 @@ tables['S13_hysteresis'] = pd.read_csv(os.path.join(DATA, 'hysteresis.csv'))
 tables['S14_abm'] = pd.read_csv(os.path.join(DATA, 'abm_monte_carlo.csv'))
 tables['S15_abm_multistart'] = pd.read_csv(os.path.join(DATA, 'abm_multistart.csv'))
 tables['S16_poolsize'] = pd.read_csv(os.path.join(DATA, 'poolsize_robustness.csv'))
+tables['S17a_heatmap_gb'] = pd.read_csv(os.path.join(DATA, 'heatmap_gamma_beta.csv'))
+tables['S17b_heatmap_gl'] = pd.read_csv(os.path.join(DATA, 'heatmap_gamma_lambda.csv'))
+tables['S18a_welfare'] = pd.read_csv(os.path.join(DATA, 'welfare.csv'))
+tables['S18b_welfare_abm'] = pd.read_csv(os.path.join(DATA, 'welfare_abm.csv'))
+tables['S9b_cost_scaled'] = pd.read_csv(os.path.join(DATA, 'cross_country_cost.csv'))
+tables['S12b_cross_effect'] = pd.read_csv(os.path.join(DATA, 'cross_effect.csv'))
+tables['S12c_eigenvalues'] = pd.read_csv(os.path.join(DATA, 'eigenvalues.csv'))
+tables['S12d_k_neutrality'] = pd.read_csv(os.path.join(DATA, 'k_neutrality.csv'))
 
 rows = []
 for name, df in tables.items():
