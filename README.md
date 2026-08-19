@@ -1,6 +1,6 @@
 # The Data Silo Trap
 
-Code and data for **"The Data Silo Trap: A Coordination Game Analysis of AI-Driven Breeding Adoption in Fragmented Seed Markets"** (FARMSYS-D-26-00322, *Farming System*).
+Code and data for **"The Data Silo Trap: A Coordination Game Analysis of AI-Driven Breeding Adoption in Fragmented Seed Markets"** (*Farming System*).
 
 A coordination-game model in which **genetic distance** enters the payoff structure as a structural barrier to data sharing in fragmented seed markets. The model identifies a **data-pool composition trap**: at equilibrium, high- and medium-R&D firms adopt, while the low-R&D majority (82%) is structurally excluded from the data-sharing pool. The trap is driven specifically by the **germplasm misalignment penalty** (γ), not by transferability decay (θ).
 
@@ -109,4 +109,4 @@ All simulation outputs are committed in `data/` (17 CSVs, backing supplementary 
 
 ## Citation
 
-Zhou, M., Yan, J., Pei, S., Peng, J., Zhang, Y., Liu, L., He, Z. *The Data Silo Trap: A Coordination Game Analysis of AI-Driven Breeding Adoption in Fragmented Seed Markets*. Farming System (manuscript FARMSYS-D-26-00322).
+Zhou, M., Yan, J., Pei, S., Peng, J., Zhang, Y., Liu, L., He, Z. *The Data Silo Trap: A Coordination Game Analysis of AI-Driven Breeding Adoption in Fragmented Seed Markets*. Farming System.
