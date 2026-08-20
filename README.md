@@ -32,19 +32,19 @@ A coordination-game model in which **genetic distance** enters the payoff struct
 │   ├── abm.py              #   Agent-based model (continuous heterogeneity)
 │   ├── channel_decomposition.py  # γ vs. θ channel separation
 │   ├── premium_stats.py    #   Firm-level premium statistics (Fig 1c)
-│   ├── run_abm_mc.py       #   ABM Monte Carlo (S14)
-│   ├── run_abm_multistart.py    # ABM multi-start experiment (S15)
-│   ├── poolsize_robustness.py   # Pool-size externality robustness (S16)
-│   ├── welfare.py          #   Welfare assessment (S18, Fig 6)
-│   ├── heatmap_robustness.py    # Joint parameter-range heatmaps (S17, Fig S1)
-│   └── gap_items.py        #   Cross-effects, stability, k, trust boost, cost scaling
+│   ├── run_abm_mc.py       #   ABM Monte Carlo (S19)
+│   ├── run_abm_multistart.py    # ABM multi-start experiment (S20)
+│   ├── poolsize_robustness.py   # Pool-size externality robustness (S21)
+│   ├── welfare.py          #   Welfare assessment (S24–S26, Fig 7)
+│   ├── heatmap_robustness.py    # Joint parameter-range heatmaps (S22–S23, Fig 6)
+│   └── gap_items.py        #   Cross-effects, stability, k, trust boost, cost scaling (S11, S15–S17)
 ├── run_all.py              # One-command full pipeline + verification
 ├── run_analysis.py         # Main runner: P0–P3, sensitivity, stability
 ├── run_fst_all.py          # F_ST sensitivity (6 countries × 3 scales)
 ├── run_fscale.py           # Cost-scale robustness (F × 0.5–1.5)
-├── make_figures.py         # Generate Fig 1–5 (PDF + PNG)
+├── make_figures.py         # Generate Fig 1–7 (PDF + PNG)
 ├── export_tables.py        # Assemble consolidated supplementary tables
-├── data/                   # All simulation outputs (27 CSVs, S1–S18)
+├── data/                   # All simulation outputs (28 CSVs, S1–S26)
 ├── figures/                # Publication figures (14 files: Fig 1–7)
 ├── supplementary_tables.csv  # Consolidated supplementary tables
 ├── requirements.txt
@@ -86,11 +86,11 @@ python analysis/channel_decomposition.py   # γ vs θ channel separation (S6)
 python run_fst_all.py                  # F_ST sensitivity (S10)
 python run_fscale.py                   # Cost-scale robustness (S11)
 python analysis/premium_stats.py       # Firm-level premium statistics (Fig 1c)
-python analysis/run_abm_mc.py          # ABM Monte Carlo (S14, ~6 min)
-python analysis/run_abm_multistart.py  # ABM multi-start (S15)
-python analysis/poolsize_robustness.py # Pool-size robustness (S16)
-python analysis/welfare.py             # Welfare assessment (S18, Fig 6)
-python analysis/heatmap_robustness.py  # Joint parameter-range heatmaps (S17, Fig S1)
+python analysis/run_abm_mc.py          # ABM Monte Carlo (S19, ~6 min)
+python analysis/run_abm_multistart.py  # ABM multi-start (S20)
+python analysis/poolsize_robustness.py # Pool-size robustness (S21)
+python analysis/welfare.py             # Welfare assessment (S24–S26, Fig 7)
+python analysis/heatmap_robustness.py  # Joint parameter-range heatmaps (S22–S23, Fig 6)
 python analysis/gap_items.py           # Cross-effects, stability, k, trust boost,
                                        #   infrastructure cost scaling (S9/S12)
 python make_figures.py                 # Regenerate all figures (reads data/)
@@ -113,7 +113,7 @@ where the misalignment penalty γ and the transferability decay θ act through d
 
 ## Data
 
-All simulation outputs are committed in `data/` (17 CSVs, backing supplementary tables S1–S16 and all five figures). Re-running the pipeline with the default seed reproduces these files exactly, and `run_all.py --verify-only` cross-checks 29 key values against the published numbers.
+All simulation outputs are committed in `data/` (28 CSVs, backing supplementary tables S1–S26 and all seven figures). Re-running the pipeline with the default seed reproduces these files exactly, and `run_all.py --verify-only` cross-checks 29 key values against the published numbers.
 
 ## Citation
 
