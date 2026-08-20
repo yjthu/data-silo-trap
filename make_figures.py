@@ -396,9 +396,9 @@ def fig5():
 
 
 # =====================================================================
-# Fig 6: Welfare assessment
+# Fig 7: Welfare assessment
 # =====================================================================
-def fig6():
+def fig7():
     ws = pd.read_csv(os.path.join(DATA, 'welfare_scan.csv'))
     wa = pd.read_csv(os.path.join(DATA, 'welfare_abm.csv'))
 
@@ -439,13 +439,13 @@ def fig6():
                 fontsize=6.5, color='#555', ha='center')
     label(ax, 'b')
 
-    save(fig, 'Fig6_welfare')
+    save(fig, 'Fig7_welfare')
 
 
 # =====================================================================
-# Fig S1 (supplementary): joint parameter-range sensitivity heatmaps
+# Fig 6 (main): joint parameter-range sensitivity heatmaps
 # =====================================================================
-def figS1():
+def fig6():
     gb = pd.read_csv(os.path.join(DATA, 'heatmap_gamma_beta.csv'))
     gl = pd.read_csv(os.path.join(DATA, 'heatmap_gamma_lambda.csv'))
 
@@ -474,7 +474,7 @@ def figS1():
     fig.colorbar(im2, ax=ax, fraction=0.046, pad=0.04)
     label(ax, 'b')
 
-    save(fig, 'FigS1_heatmap')
+    save(fig, 'Fig6_heatmap')
 
 
 if __name__ == '__main__':
@@ -484,5 +484,5 @@ if __name__ == '__main__':
     fig4()
     fig5()
     fig6()
-    figS1()
+    fig7()
     print('All figures generated.')

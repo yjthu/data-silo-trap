@@ -45,7 +45,7 @@ A coordination-game model in which **genetic distance** enters the payoff struct
 ├── make_figures.py         # Generate Fig 1–5 (PDF + PNG)
 ├── export_tables.py        # Assemble consolidated supplementary tables
 ├── data/                   # All simulation outputs (27 CSVs, S1–S18)
-├── figures/                # Publication figures (14 files: Fig 1–6 + Fig S1)
+├── figures/                # Publication figures (14 files: Fig 1–7)
 ├── supplementary_tables.csv  # Consolidated supplementary tables
 ├── requirements.txt
 └── .gitignore
