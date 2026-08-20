@@ -412,11 +412,11 @@ def fig7():
     ax.plot(sub.index, sub.values, 'o-', color=cOrange, lw=1.5, ms=3, label='Subsidy s')
     ax.plot(plat.index, plat.values, 's-', color=cGreen, lw=1.5, ms=3, label='Platform fee')
     ax.axhline(0, color='gray', lw=0.8, ls='--')
-    ax.annotate('welfare-negative\nnet of costs', xy=(0.5, -0.010), fontsize=6.5,
+    ax.annotate('welfare-negative\nnet of costs', xy=(0.32, 0.0025), fontsize=6.5,
                 color='#555', ha='center')
     ax.set_xlabel('Intervention intensity'); ax.set_ylabel(r'$\Delta$W per firm')
     ax.set_ylim(-0.025, 0.005)
-    ax.legend(fontsize=6.5)
+    ax.legend(fontsize=6.5, loc='upper right')
     label(ax, 'a')
 
     # (b) ABM low- vs high-equilibrium welfare
@@ -433,10 +433,10 @@ def fig7():
         ax.text(i - 0.18, low[i] + 0.004, f'{low[i]:.2f}', ha='center', fontsize=6)
         ax.text(i + 0.18, high[i] + 0.004, f'{high[i]:.2f}', ha='center', fontsize=6)
     ax.set_xticks(x); ax.set_xticklabels([f'seed {s}' for s in seeds])
-    ax.set_ylabel('Welfare per firm'); ax.set_ylim(0, 1.2)
-    ax.legend(fontsize=6.5)
-    ax.annotate('low equilibrium is\nwelfare-superior', xy=(1, 0.35),
+    ax.set_ylabel('Welfare per firm'); ax.set_ylim(0, 1.35)
+    ax.annotate('low equilibrium is\nwelfare-superior', xy=(1, 0.5),
                 fontsize=6.5, color='#555', ha='center')
+    ax.legend(fontsize=6.5, ncol=2, loc='upper center')
     label(ax, 'b')
 
     save(fig, 'Fig7_welfare')
