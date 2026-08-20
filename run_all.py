@@ -172,6 +172,8 @@ EXPECTED = [
      lambda df: df[df['equilibrium'] == 'low']['W_per_firm'].mean(), 1.1124, 'ABM low-eq welfare'),
     ('welfare_abm.csv',
      lambda df: df[df['equilibrium'] == 'high']['W_per_firm'].mean(), 0.9869, 'ABM high-eq welfare'),
+    ('welfare_lambda.csv',
+     lambda df: df[df['lambda'] == 0.0]['W0'].iloc[0], 1.0194, 'closed-data baseline welfare'),
     ('cross_effect.csv', lambda df: df.iloc[0, 3], -0.8111, 'cross-effect dV_H/drho_L'),
     ('eigenvalues.csv', lambda df: df['eigenvalue'].max(), -0.2, 'Jacobian eigenvalue max (<0)'),
     ('k_neutrality.csv', lambda df: df[df['k'] >= 0.2]['T100'].max()
