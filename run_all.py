@@ -5,7 +5,7 @@ Regenerates, in order and with fixed seeds (42), every number behind the
 manuscript: simulation data (P0–P3, cross-country, F_ST, F-scale, OAT,
 closed-data, stability, hysteresis, decomposition, channel decomposition,
 premium statistics, ABM Monte Carlo, ABM multi-start, pool-size robustness),
-the five figures, and the consolidated supplementary-tables CSV — then
+the seven figures, and the consolidated supplementary-tables CSV — then
 VERIFIES the key published values against the manuscript.
 
 Usage (run from the repository root):
