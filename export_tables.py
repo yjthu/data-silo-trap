@@ -38,6 +38,7 @@ tables['S17a_heatmap_gb'] = pd.read_csv(os.path.join(DATA, 'heatmap_gamma_beta.c
 tables['S17b_heatmap_gl'] = pd.read_csv(os.path.join(DATA, 'heatmap_gamma_lambda.csv'))
 tables['S18a_welfare'] = pd.read_csv(os.path.join(DATA, 'welfare.csv'))
 tables['S18b_welfare_abm'] = pd.read_csv(os.path.join(DATA, 'welfare_abm.csv'))
+tables['S18c_welfare_lambda'] = pd.read_csv(os.path.join(DATA, 'welfare_lambda.csv'))
 tables['S9b_cost_scaled'] = pd.read_csv(os.path.join(DATA, 'cross_country_cost.csv'))
 tables['S12b_cross_effect'] = pd.read_csv(os.path.join(DATA, 'cross_effect.csv'))
 tables['S12c_eigenvalues'] = pd.read_csv(os.path.join(DATA, 'eigenvalues.csv'))
