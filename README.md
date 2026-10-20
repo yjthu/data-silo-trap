@@ -4,6 +4,8 @@ Code and data for **"The Data Silo Trap: A Coordination Game Analysis of AI-Driv
 
 A coordination-game model in which **genetic distance** enters the payoff structure as a structural barrier to data sharing in fragmented seed markets. The model identifies a **data-pool composition trap**: at equilibrium, high- and medium-R&D firms adopt, while the low-R&D majority (82%) is structurally excluded from the data-sharing pool. The trap is driven specifically by the **germplasm misalignment penalty** (γ), not by transferability decay (θ).
 
+> **Known issues.** Five unintentional errors in the published article and code are documented, with corrected values and a script that recomputes them, in [KNOWN_ISSUES.md](KNOWN_ISSUES.md). None of them reverses a headline result; `run_all.py --verify-only` still reproduces the published numbers exactly. The correction script first re-derives every published number it then corrects (deviation < 5×10⁻⁷), so the corrected values are the same arithmetic with the defect removed, not a different experiment.
+
 ## Key findings
 
 | Result | Value |
@@ -64,7 +66,7 @@ pip install -r requirements.txt   # numpy, pandas, matplotlib
 All results are deterministic given the random seed (default: 42).
 
 ```bash
-# One-command full pipeline: all data -> figures -> tables -> 29-value
+# One-command full pipeline: all data -> figures -> tables -> 42-value
 # verification against the manuscript (~60-90 min)
 python run_all.py --full
 
@@ -113,7 +115,7 @@ where the misalignment penalty γ and the transferability decay θ act through d
 
 ## Data
 
-All simulation outputs are committed in `data/` (28 CSVs, backing supplementary tables S1–S26 and all seven figures). Re-running the pipeline with the default seed reproduces these files exactly, and `run_all.py --verify-only` cross-checks 29 key values against the published numbers.
+All simulation outputs are committed in `data/` (28 CSVs, backing supplementary tables S1–S26 and all seven figures). Re-running the pipeline with the default seed reproduces these files exactly, and `run_all.py --verify-only` cross-checks 42 key values against the published numbers.
 
 ## Citation
 
