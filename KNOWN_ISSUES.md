@@ -1,8 +1,8 @@
 # Known issues
 
-**Article.** Zhou, M., Yan, J., Peng, J., Zhang, Y., Pei, S., He, Z. *The Data Silo Trap: A
-Coordination Game Analysis of AI-Driven Breeding Adoption in Fragmented Seed Markets.*
-Farming System (2026). doi:10.1016/j.farsys.2026.100282
+**Article.** Zhou, M., Yan, J., Peng, J., Zhang, Y., Pei, S., & He, Z. (2026). *The Data Silo
+Trap: A Coordination Game Analysis of AI-Driven Breeding Adoption in Fragmented Seed Markets.*
+Farming System, 100282. https://doi.org/10.1016/j.farsys.2026.100282
 
 **Scope of this file.** A maintained record of the unintentional errors in the published
 article and in the code that produced it, with the corrected values and a script that
@@ -297,10 +297,10 @@ Output at MC = 300:
 Use the corrected values in §2.4 and §3. Cite the article for the published results and this
 record for the corrections:
 
-> Zhou, M., Yan, J., Peng, J., Zhang, Y., Pei, S., He, Z. *The Data Silo Trap: A Coordination
-> Game Analysis of AI-Driven Breeding Adoption in Fragmented Seed Markets.* Farming System
-> (2026). doi:10.1016/j.farsys.2026.100282 — with corrections recorded in
-> `KNOWN_ISSUES.md`, v1 (20 October 2026), §2.4 and §3.
+> Zhou, M., Yan, J., Peng, J., Zhang, Y., Pei, S., & He, Z. (2026). *The Data Silo Trap: A
+> Coordination Game Analysis of AI-Driven Breeding Adoption in Fragmented Seed Markets.*
+> Farming System, 100282. https://doi.org/10.1016/j.farsys.2026.100282 — with corrections
+> recorded in `KNOWN_ISSUES.md`, v1 (20 October 2026), §2.4 and §3.
 
 State which set a quoted figure comes from. The two are not within rounding of one another: at
 b = 0.30 the bonus is +0.001 published and −0.033 corrected, a difference of sign as well as

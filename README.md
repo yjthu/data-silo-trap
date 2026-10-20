@@ -119,4 +119,19 @@ All simulation outputs are committed in `data/` (28 CSVs, backing supplementary 
 
 ## Citation
 
-Zhou, M., Yan, J., Peng, J., Zhang, Y.,  Pei, S., He, Z. *The Data Silo Trap: A Coordination Game Analysis of AI-Driven Breeding Adoption in Fragmented Seed Markets*. Farming System.
+If you use this code, the model, or the numbers in `data/`, please cite the article:
+
+> Zhou, M., Yan, J., Peng, J., Zhang, Y., Pei, S., & He, Z. (2026). The Data Silo Trap: A Coordination Game Analysis of AI-Driven Breeding Adoption in Fragmented Seed Markets. *Farming System*, 100282. https://doi.org/10.1016/j.farsys.2026.100282
+
+Open access under CC BY 4.0. Cited by article number (100282); Crossref records no volume for this item.
+
+```bibtex
+@article{zhou2026datasilotrap,
+  author  = {Zhou, Meng and Yan, Jun and Peng, Jiaqi and Zhang, Ying and Pei, Shan and He, Zhongwei},
+  title   = {The Data Silo Trap: A Coordination Game Analysis of {AI}-Driven Breeding Adoption in Fragmented Seed Markets},
+  journal = {Farming System},
+  year    = {2026},
+  pages   = {100282},
+  doi     = {10.1016/j.farsys.2026.100282}
+}
+```
