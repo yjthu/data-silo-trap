@@ -4,7 +4,7 @@ Code and data for **"The Data Silo Trap: A Coordination Game Analysis of AI-Driv
 
 A coordination-game model in which **genetic distance** enters the payoff structure as a structural barrier to data sharing in fragmented seed markets. The model identifies a **data-pool composition trap**: at equilibrium, high- and medium-R&D firms adopt, while the low-R&D majority (82%) is structurally excluded from the data-sharing pool. The trap is driven specifically by the **germplasm misalignment penalty** (γ), not by transferability decay (θ).
 
-> **Known issues.** Five unintentional errors in the published article and code are documented, with corrected values and a script that recomputes them, in [KNOWN_ISSUES.md](KNOWN_ISSUES.md). None of them reverses a headline result; `run_all.py --verify-only` still reproduces the published numbers exactly. The correction script first re-derives every published number it then corrects (deviation < 5×10⁻⁷), so the corrected values are the same arithmetic with the defect removed, not a different experiment.
+> **Known issues.** Four unintentional errors in the published article and code are documented, with corrected values and a script that recomputes them, in [KNOWN_ISSUES.md](KNOWN_ISSUES.md). None of them reverses a headline result; `run_all.py --verify-only` still reproduces the published numbers exactly. The correction script first re-derives every published number it then corrects (deviation < 5×10⁻⁷), so the corrected values are the same arithmetic with the defect removed, not a different experiment.
 
 ## Key findings
 

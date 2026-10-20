@@ -48,7 +48,6 @@ run on a different sample; they are the same arithmetic with the defect removed.
 | **KI-2** | The accuracy index has no lower bound | modelling convention | §4.11 forced-adoption gap: 21.1% → 12.5% | No. Sign and 100%-of-draws robustness unchanged; magnitude overstated by 1.69× |
 | **KI-3** | θ one-at-a-time range [1, 3] is narrow | reporting choice | Table S9 | No. γ remains 8× larger |
 | **KI-4** | The verification harness does not lock `W_bonus_net` (or `W_platform_net`) | test coverage | `run_all.py` | n/a — part of why KI-1 survived |
-| **KI-5** | README said "29 verification values"; `run_all.py` checks 42 | documentation | README | No — corrected in the README alongside this record |
 
 ---
 
@@ -198,7 +197,7 @@ qualifier; the qualitative conclusion does not.
 
 ---
 
-## 4. KI-3 to KI-5 — smaller items
+## 4. KI-3 and KI-4 — smaller items
 
 **KI-3 (reporting choice).** The θ one-at-a-time range is [1, 3]. Over that range the published
 sensitivity table gives a T₁₀₀ span of 0.0141 (Table S9, 300 draws). Re-solving the same seeds on
@@ -211,10 +210,6 @@ unaffected and remains true by a factor of eight; what is understated is the rep
 welfare (0.8558) and the subsidy net welfare (−0.0085), but not `W_bonus_net` — the value
 produced by the defective path — nor `W_platform_net`. A green verification run therefore says
 nothing about KI-1. Any future revision should lock both.
-
-**KI-5 (documentation).** README stated "29-value verification"; `EXPECTED` in `run_all.py`
-holds 42 entries. Cosmetic, and corrected in the README alongside this record: it now says 42 in
-both places, so the two descriptions agree.
 
 ---
 
@@ -310,7 +305,7 @@ magnitude, and the induced pool quality is 0.074 published and 0.500 corrected.
 
 ## 8. Version
 
-**v1** (20 October 2026) — first record, and the current one. KI-1 through KI-5 documented;
+**v1** (20 October 2026) — first record, and the current one. KI-1 through KI-4 documented;
 `analysis/welfare_corrected.py` added; no published artefact modified, and
 `run_all.py --verify-only` still reproduces the published numbers exactly (42/42). Every
 published number quoted in §2 and §3 is re-derived by the script itself, so the record and the
